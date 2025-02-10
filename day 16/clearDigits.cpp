@@ -1,17 +1,16 @@
-//3174. Clear Digits
 class Solution {
 public:
-    std::string clearDigits(const std::string& s) {
-        std::string om;
+    string clearDigits(string s) {
+        string result = ""; 
         for (char c : s) {
-            if (c >= '0' && c <= '9') {
-                if (!om.empty()) {
-                    om.pop_back(); // Remove the last character if om is not empty
+            if (isdigit(c)) {
+                if (!result.empty()) {
+                    result.pop_back(); 
                 }
             } else {
-                om.push_back(c); // Append the character if it's not a digit
+                result += c; 
             }
         }
-        return om;
+        return result;
     }
 };
