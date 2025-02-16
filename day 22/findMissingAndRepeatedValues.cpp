@@ -6,4 +6,4 @@ class Solution {
             vector<int> ans;
             
         }
-    };
+    }
