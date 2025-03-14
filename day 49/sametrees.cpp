@@ -9,26 +9,14 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution {
+ class Solution {
     public:
         bool isSameTree(TreeNode* p, TreeNode* q) {
-            
-           vector<int> ans1;
-           vector<int> ans2;
-            helper(p, ans1);
-            helper(q, ans2);
-            if(ans1.size()!=ans2.size()) return false;
-            for(int i=0;i<ans1.size();i++){
-                if(ans1[i]!=ans2[i]) return false;
-            }
+            if(p==nullptr && q==nullptr) return true;
+            if(p==nullptr || q==nullptr) return false;
     
-            return true;
+            if(p->val != q->val) return false;
+    
+            return isSameTree(p->left,q->left) && isSameTree(p->right, q->right);
         }
-    
-        void helper(TreeNode* root , vector<int>& ans ){
-                if(root == nullptr) return;
-                helper(root->left,ans);
-                ans.push_back(root->val);
-                helper(root->right,ans);
-            }
     };
